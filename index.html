@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港で日本のテレビを見るならJitakuTV香港｜地上波・BS・CSをリアルタイム視聴</title>
+    <meta name="description" content="香港で日本のテレビを見るならJitakuTV香港。日本の地上波・BS・CS 全66chを香港からテレビ・スマホ・タブレットで視聴できます。">
+
+    <!-- TODO: 新ドメイン決定後に canonical / og:url を設定 -->
+    <!-- <link rel="canonical" href="https://（新ドメイン）/"> -->
+
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="香港で日本のテレビを見るならJitakuTV香港｜地上波・BS・CSをリアルタイム視聴">
+    <meta property="og:description" content="香港で日本のテレビを見るならJitakuTV香港。日本の地上波・BS・CS 全66chを香港からテレビ・スマホ・タブレットで視聴できます。">
+    <!-- TODO: <meta property="og:url" content="https://（新ドメイン）/"> -->
+    <!-- TODO: <meta property="og:image" content="https://（新ドメイン）/images/favicon.png"> -->
+
+    <!-- Favicon (TODO: images/favicon.png をHK用に用意) -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Fonts / Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=2">
+
+    <!-- TODO: Google Analytics はHK用の測定IDを新規発行して設置（BBMAXのIDは流用しない） -->
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JitakuTV香港",
+      "description": "香港で日本のテレビを見るならJitakuTV香港。日本の地上波・BS・CSをリアルタイム視聴。",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "HK"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- DRAFT BAR（公開前に削除） -->
+    <div class="draft-bar">DRAFT（確認用）：<span class="todo">黄色の箇所</span>はBBMAXの文言を仮置きしたもの、または未確定の項目です。公開前に差し替え・確認してください。</div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- TODO: 実ロゴ画像がある場合は <img src="images/jitakutv-logo.svg" alt="JitakuTV 香港"> に差し替え -->
+                <a href="index.html"><span class="logo-text">Jitaku<em>TV</em><small>香港</small></span></a>
+            </div>
+
+            <div class="header-slogan">
+                海外で日本のテレビ視聴！
+            </div>
+
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SIDEBAR MENU -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="side-menu" id="sideMenu" aria-label="Sidebar Menu">
+        <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+
+        <ul class="side-menu-links">
+            <li><a href="#details-section">Jitakutvとは</a></li>
+            <li><a href="#pricing-section">プラン・料金</a></li>
+            <li><a href="#workflow-section">ご契約までの流れ</a></li>
+            <li><a href="moshikomi.html" class="btn-highlight">お申込み</a></li>
+            <li><a href="contact.html" class="btn-outline-menu">お問合せ</a></li>
+
+            <li class="menu-divider"></li>
+            <li><a href="faq.html">良くあるご質問</a></li>
+            <li><a href="#" id="snsLink">SNS <span class="todo">リンク設定</span></a></li>
+        </ul>
+
+        <div class="side-menu-footer">
+            <div class="phone-info">
+                <p><span class="todo">☎ +852 9702 1586</span> <img src="https://flagcdn.com/w40/jp.png" alt="Japan" style="vertical-align: middle; margin: 0 4px; width: 20px; border: 1px solid #ddd; border-radius: 2px;"> <small>(日本語対応)</small></p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-nhk">
+            <h1 class="sr-only">香港で日本のテレビを見るなら JitakuTV香港</h1>
+
+            <div class="hero-wrap">
+                <!-- バナー切り替え：画像を増減する場合は下の <img> を追加/削除（1枚目は必ず残す）。秒数は下の script の 3000（ミリ秒）で変更 -->
+                <div class="hero-slides" id="heroSlides">
+                    <img src="images/banner-jitakutv-hk.jpg" class="hero-banner hero-slide is-active" width="1478" height="720"
+                         alt="JitakuTV香港 日本の感動を、香港でも。全66ch">
+                    <img src="images/banner-jitakutv-hk2.jpg" class="hero-banner hero-slide" width="1478" height="720"
+                         alt="地上波・BS・CS 全66chが見放題">
+                    <img src="images/banner-jitakutv-hk3.jpg" class="hero-banner hero-slide" width="1478" height="720"
+                         alt="家ではTV、外ではスマホで">
+                    <img src="images/banner-jitakutv-hk4.jpg" class="hero-banner hero-slide" width="1478" height="720"
+                         alt="安心の日本語サポート">
+                    <div class="hero-dots" id="heroDots" aria-label="バナー切り替え"></div>
+                </div>
+                <div class="hero-cta">
+                    <a href="moshikomi.html" class="btn-primary">今すぐ申し込む</a>
+                    <a href="#details-section" class="btn-outline">詳細を見る</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION: サービス詳細 -->
+        <section id="details-section" class="details-section">
+            <div class="container">
+
+                <div class="details-header">
+                    <h2 class="section-title">香港で日本のテレビを見るなら<br>JitakuTV香港！</h2>
+                    <span class="badge-green">香港で対応可能</span>
+                </div>
+
+                <div class="highlights-banner">
+                    <div class="hl-item">
+                        <span class="hl-number">66</span>
+                        <span class="hl-text">全66ch 視聴可能</span>
+                    </div>
+                    <div class="hl-item">
+                        <span class="hl-number">4</span>
+                        <span class="hl-text"><span class="todo">4週間の録画視聴可能</span></span>
+                    </div>
+                    <div class="hl-item">
+                        <span class="hl-icon"><i class="fas fa-plug" aria-hidden="true"></i></span>
+                        <span class="hl-text">簡単接続</span>
+                    </div>
+                </div>
+
+                <h3 class="sub-section-title"><i class="fas fa-star" aria-hidden="true"></i> JitakuTV香港の特徴</h3>
+                <div class="features-grid">
+
+                    <article class="feature-card feature-card-highlight">
+                        <div class="feature-icon"><i class="fas fa-gift" aria-hidden="true"></i></div>
+                        <h4><span class="todo">7日間の無料体験＆出張設置費0円</span></h4>
+                        <p><span class="todo">まずは7日間完全無料でお試しいただけます！香港内は専門スタッフによる出張設置費も無料（0円）で安心です。（※内容・条件を香港の実態に合わせて要確認）</span></p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+                        <h4><span class="todo">安定した高画質をご提供</span></h4>
+                        <p><span class="todo">独自の回線・サーバーにより、映像が途中で止まることが少なく、安定した映像配信をお届けします。日本にいた時と同じようにフルHDでご覧いただけます。（要確認）</span></p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+                        <h4>スマホ・タブレットでもご視聴可能</h4>
+                        <p><span class="todo">新規ご契約のお客様全員に、スマホ・タブレットでも日本のテレビ番組をご視聴できるアプリを無料でプレゼント。※視聴可能番組はご契約プランと同様です。（要確認）</span></p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-undo-alt" aria-hidden="true"></i></div>
+                        <h4><span class="todo">途中で解約しても残月分の金額を返金</span></h4>
+                        <p><span class="todo">複数月でのご契約途中で解約の場合、残月分の金額は当月末で締め、残額は返金いたします。（要確認）</span></p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
+                        <h4>安心の日本語対応</h4>
+                        <p>お問い合わせの際には日本語対応が可能ですので、トラブルなどが起きた際にも安心してご利用いただけます。<span class="todo">（対応時間を要確認）</span></p>
+                    </article>
+
+                </div>
+
+                <!-- 3つの柱 -->
+                <div id="pillars-section" class="pillars-container">
+                    <h3 class="sub-section-title"><i class="fas fa-globe-asia" aria-hidden="true"></i> 日本のテレビで海外生活をサポート</h3>
+                    <div class="pillars-grid">
+
+                        <article class="pillar-card">
+                            <div class="pillar-badge">1</div>
+                            <h4>家ではTV、<br>外ではスマホ・タブレットで</h4>
+                            <div class="pillar-img-box">
+                                <img src="images/watchtv.jpg" alt="スマホでいつでもどこでもテレビ視聴" loading="lazy">
+                            </div>
+                            <p class="pillar-desc"><strong>ネット環境があればいつでもどこでも！</strong></p>
+                            <p class="app-list">いつでもどこでも日本のテレビが見放題</p>
+                        </article>
+
+                        <article class="pillar-card">
+                            <div class="pillar-badge">2</div>
+                            <h4>豊富な番組</h4>
+                            <div class="pillar-img-box">
+                                <img src="images/tv-logos.png" alt="日本民放テレビのロゴ一覧" loading="lazy">
+                            </div>
+                            <div class="pillar-tags">
+                                <span>地デジ</span>
+                                <span>BS</span>
+                                <span>CS</span>
+                            </div>
+                            <p class="pillar-desc">地上波・BS・CS 全66局視聴可能</p>
+                        </article>
+
+                        <article class="pillar-card">
+                            <div class="pillar-badge">3</div>
+                            <h4><span class="todo">VPNルーター内蔵</span></h4>
+                            <div class="pillar-img-box">
+                                <img src="images/box.png" alt="JitakuTV TV BOX" loading="lazy">
+                            </div>
+                            <p class="pillar-desc"><strong><span class="todo">※別途お申し込み要（要確認）</span></strong></p>
+                            <p class="app-list">TVer / ABEMA / Prime Video / Netflix / DAZN など</p>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- プラン・料金 -->
+                <div id="pricing-section" class="pricing-section">
+                    <h3 class="sub-section-title"><i class="fas fa-list-alt" aria-hidden="true"></i> パック別チャンネル・料金一覧</h3>
+
+                    <div class="pricing-grid">
+                        <article class="pricing-card">
+                            <div class="card-header border-blue">
+                                <h3>Aプラン </h3>
+                                <div class="channel-count">全36チャンネル</div>
+                                <div class="price"><span class="todo">280 HKD</span> <span>/ 月</span></div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="channel-category-list">
+                                    <li><i class="fas fa-check-circle text-blue" aria-hidden="true"></i> 地上波 (NHK、日本テレビ、 テレビ朝日、 TBSテレビ、 TV東京、 フジテレビ、 東京MX 等)</li>
+                                    <li><i class="fas fa-check-circle text-blue" aria-hidden="true"></i> BS無料放送 (NHK BS、 BS-日テレ、 BS-TBS、 BS-朝日 等)</li>
+                                    <li><i class="fas fa-check-circle text-blue" aria-hidden="true"></i> BS有料放送 (WOWOW、スターチャンネル、 J SPORTS 1〜4 等)</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article class="pricing-card featured">
+                            <div class="popular-badge">一番人気</div>
+                            <div class="card-header border-red">
+                                <h3>Bプラン</h3>
+                                <div class="channel-count">全66チャンネル</div>
+                                <div class="price"><span class="todo">380 HKD</span> <span>/ 月</span></div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="channel-category-list">
+                                    <li><i class="fas fa-check-circle text-red" aria-hidden="true"></i> <strong>Aプランの全36チャンネル</strong></li>
+                                    <li><i class="fas fa-check-circle text-red" aria-hidden="true"></i> <strong>CS放送 (+30ch追加)</strong></li>
+                                    <li class="sub-detail">ムービープラス HD、GAORA SPORTS、スカイ・A sports+、ゴルフネットワーク、Music Japan TV、ディズニージュニア、CNN J、東映チャンネル、BBC WORLD NEWS 等</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+
+                    <p class="option-note" style="text-align:center;margin-bottom:24px;"><span class="todo">※プラン構成・チャンネル一覧はBBMAXの内容を仮置きしています。香港の提供内容・料金（HK$）に差し替えてください。</span></p>
+
+                    <div class="pricing-options-container">
+                        <div class="option-card option-discount">
+                            <div class="option-header">
+                                <span class="option-badge"><i class="fas fa-tv" aria-hidden="true"></i> お得な2台目割引 <span class="todo">要確認</span></span>
+                                <p class="option-sub">リビングだけでなく、ベッドルームやお子様のお部屋でも日本のTVが楽しめます！</p>
+                            </div>
+                            <ul class="option-price-list">
+                                <li>
+                                    <span class="opt-plan">① 36ch</span>
+                                    <span class="opt-price"><strong class="todo">280 HKD</strong> <small>/月</small></span>
+                                </li>
+                                <li>
+                                    <span class="opt-plan">② 66ch</span>
+                                    <span class="opt-price"><strong class="todo">380 HKD</strong> <small>/月</small></span>
+                                </li>
+                            </ul>
+                            <p class="option-note">※1台目には対象となりません</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- チャンネル一覧表 -->
+                <div class="channel-table-section">
+                    <h4 class="table-title">パック別チャンネル一覧表</h4>
+
+                    <div class="table-responsive-wrapper">
+                        <table class="channel-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-category">放送区分</th>
+                                    <th class="col-plan-a">
+                                        <div class="plan-head-name">Aプラン (全36ch)</div>
+                                        <div class="plan-head-price"><span class="todo">280 HKD / 月</span></div>
+                                    </th>
+                                    <th class="col-plan-b">
+                                        <div class="plan-head-name">Bプラン (全66ch)</div>
+                                        <div class="plan-head-price"><span class="todo">380 HKD / 月</span></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cat-cell">地上波</td>
+                                    <td class="plan-a-cell">
+                                        NHK総合東京、NHK-Eテレ、日本テレビ、テレビ朝日、TBSテレビ、テレビ東京、フジテレビ、東京MX、NHK総合大阪、読売テレビ、毎日放送、朝日放送、関西テレビ、テレビ大阪、サンテレビ。
+                                    </td>
+                                    <td class="plan-b-cell">
+                                        <strong>NHK総合東京、NHK-Eテレ、日本テレビ、テレビ朝日、TBSテレビ、テレビ東京、フジテレビ、東京MX、NHK総合大阪、読売テレビ、毎日放送、朝日放送、関西テレビ、テレビ大阪、サンテレビ。</strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="cat-cell">BS無料放送</td>
+                                    <td class="plan-a-cell">
+                                        NHK BS、NHKBSP4K、BS-日テレ、BS-朝日、BS-TBS、BS-テレ東、BS-フジ。
+                                    </td>
+                                    <td class="plan-b-cell">
+                                        <strong>NHK BS、NHKBSP4K、BS-日テレ、BS-朝日、BS-TBS、BS-テレ東、BS-フジ。</strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="cat-cell">BS有料放送</td>
+                                    <td class="plan-a-cell">
+                                        WOWOWプライム、WOWOWライブ、WOWOWシネマ、BS10 スターチャンネル、グリーンチャンネル、BSアニマックス、J SPORTS 1、J SPORTS 2、J SPORTS 3、J SPORTS 4、日本映画専門チャンネル、BS釣りビジョン、ディズニー・チャンネル、J:COM BS。
+                                    </td>
+                                    <td class="plan-b-cell">
+                                        <strong>WOWOWプライム、WOWOWライブ、WOWOWシネマ、BS10 スターチャンネル、グリーンチャンネル、BSアニマックス、J SPORTS 1、J SPORTS 2、J SPORTS 3、J SPORTS 4、日本映画専門チャンネル、BS釣りビジョン、ディズニー・チャンネル、J:COM BS。</strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="cat-cell highlight-cat">CS放送</td>
+                                    <td class="plan-a-cell not-supported">
+                                        <span class="no-icon">ー</span> 対象外
+                                    </td>
+                                    <td class="plan-b-cell cs-list">
+                                        <strong>衛星劇場、ムービープラス HD、スカイ・A sports+、GAORA SPORTS、日テレG、ゴルフネットワーク、時代劇専門チャンネル、ファミリー劇場 HD、ホームドラマチャンネル、MONDO TV、フジテレビNEXT、女性チャンネル LaLa TV、Music Japan TV、スペースシャワーTV、MTV、演歌ポップスチャンネル、キッズステーション、カートゥーン チャンネル、ディズニージュニア、ディスカバリーチャンネル、アニマルプラネット、ヒストリーチャンネル、ナショナル ジオグラフィック、TBSニュースバード、TAKARAZUKA SKY STAGE、東映チャンネル、CNN J、BBC WORLD NEWS、旅チャンネル、チャンネル銀河。</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- まとめ払い -->
+                <div class="discount-banner">
+                    <h4><i class="fas fa-gift" aria-hidden="true"></i> まとめ払いがお得！お得な割引プラン</h4>
+                    <div class="discount-grid">
+                        <div class="discount-item">
+                            <span class="disc-title">5ヵ月分のお支払いで</span>
+                            <span class="disc-desc"><strong>6ヵ月</strong> 視聴可能 <small>(1ヵ月分無料！)</small></span>
+                        </div>
+                        <div class="discount-item">
+                            <span class="disc-title">10ヵ月分のお支払いで</span>
+                            <span class="disc-desc"><strong>12ヵ月</strong> 視聴可能 <small>(2ヵ月分無料！)</small></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ご契約までの流れ -->
+                <section id="workflow-section" class="step-flow-section">
+                    <div class="step-flow-header">
+                        <h3>JitakuTV香港 ご契約までの流れ</h3>
+                    </div>
+
+                    <div class="step-flow-container">
+                        <div class="step-card">
+                            <div class="step-badge">
+                                <span>STEP</span>
+                                <strong>1</strong>
+                            </div>
+                            <div class="step-content">
+                                <h4>お申込み窓口にご連絡ください。</h4>
+                                <p class="step-desc">お電話かWEBサイトよりお申し込み下さい。ご不明な点がございましたら下記の電話番号までお気軽にご連絡下さいませ。</p>
+
+                                <div class="step-contact-box">
+                                    <div class="contact-col">
+                                        <span class="contact-label"><i class="fas fa-circle"></i> WEBからの各種お申込み・お問合せ</span>
+                                        <div class="btn-action-group">
+                                            <a href="moshikomi.html" class="btn-step-red">お申し込み</a>
+                                            <a href="contact.html" class="btn-step-green">お問い合わせ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-badge">
+                                <span>STEP</span>
+                                <strong>2</strong>
+                            </div>
+                            <div class="step-content">
+                                <h4>申込内容の確認・端末の設置</h4>
+                                <p class="step-desc">お申し込みの内容を元に、お客様のお住まいのエリアでご利用いただけるかを確認させていただいた上で設置にうかがいます。<span class="todo">本契約以降、【無料キャンペーン】などの適用がございます。※都度キャンペーン内容は変動いたしますのでお問い合わせくださいませ。（要確認）</span></p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-badge">
+                                <span>STEP</span>
+                                <strong>3</strong>
+                            </div>
+                            <div class="step-content">
+                                <h4>ご利用開始</h4>
+                                <p class="step-desc">設置完了後、すぐにご利用可能です。<span class="todo">7日間の無料体験もお楽しみいただけます。（要確認）</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact-section">
+        <div class="footer-container">
+            <div class="footer-col footer-brand">
+                <span class="logo-text">Jitaku<em>TV</em><small>香港</small></span>
+                <p class="brand-desc" style="margin-top:12px;">海外で日本のテレビ視聴！</p>
+
+                <div class="trust-badges">
+                    <div class="badge-item">
+                        <span class="badge-icon">🎧</span>
+                        <span>安心の日本語サポート</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">クイックリンク</h4>
+                <ul class="footer-links">
+                    <li><a href="#details-section">Jitakutvとは</a></li>
+                    <li><a href="#pricing-section">プラン・料金</a></li>
+                    <li><a href="#workflow-section">ご契約までの流れ</a></li>
+                    <li><a href="faq.html">良くあるご質問</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <h4 class="footer-title">会社情報</h4>
+                <ul class="contact-info">
+                    <li>
+                        <span class="contact-icon">📞</span>
+                        <div><strong>電話番号:</strong><br><span class="todo">+852 9702 1586</span></div>
+                    </li>
+                    <li>
+                        <span class="contact-icon">📍</span>
+                        <div><strong>住所:</strong> <span class="todo">L82 B1 Peninsula Centre（半島中心）, 67 Mody Rd, Tsim Sha Tsui, Hong Kong</span></div>
+                    </li>
+                    <li>
+                        <span class="contact-icon">⏰</span>
+                        <div><strong>営業時間:</strong><span class="todo">（要確認）</span></div>
+                    </li>
+                    <li>
+                        <span class="contact-icon">✉️</span>
+                        <div><strong>メール:</strong><br><span class="todo">hk@bbmax.net</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="payment-methods">
+                    <span>対応決済:</span>
+                    <span class="todo">（要確認）</span>
+                </div>
+                <p class="copyright">&copy; 2026 JitakuTV香港</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT HAMBURGER MENU -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuLinks = document.querySelectorAll('.side-menu-links a');
+
+            function openMenu() {
+                sideMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+            }
+
+            function closeMenu() {
+                sideMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            }
+
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        });
+    </script>
+
+    <!-- SCRIPT BANNER SLIDER（画像の読み込み完了後に開始。読み込めない画像は自動でスキップ） -->
+    <script>
+        window.addEventListener('load', function () {
+            var box = document.getElementById('heroSlides');
+            var dotsBox = document.getElementById('heroDots');
+            if (!box || !dotsBox) return;
+            var INTERVAL = 3000; // 切り替え間隔（ミリ秒）
+            var slides = [];
+            box.querySelectorAll('.hero-slide').forEach(function (img) {
+                if (img.complete && img.naturalWidth > 0) { slides.push(img); }
+                else { img.style.display = 'none'; console.warn('バナー画像を読み込めません:', img.getAttribute('src')); }
+            });
+            if (slides.length < 2) return;
+            var cur = 0, timer = null, dots = [];
+            slides.forEach(function (_, i) {
+                var d = document.createElement('button');
+                d.type = 'button';
+                d.setAttribute('aria-label', (i + 1) + '枚目');
+                d.addEventListener('click', function () { go(i); start(); });
+                dotsBox.appendChild(d); dots.push(d);
+            });
+            function go(n) {
+                slides[cur].classList.remove('is-active'); dots[cur].classList.remove('on');
+                cur = (n + slides.length) % slides.length;
+                slides[cur].classList.add('is-active'); dots[cur].classList.add('on');
+            }
+            function start() { stop(); timer = setInterval(function () { go(cur + 1); }, INTERVAL); }
+            function stop() { if (timer) clearInterval(timer); }
+            go(0); start();
+            box.addEventListener('mouseenter', stop);
+            box.addEventListener('mouseleave', start);
+            var x0 = null;
+            box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+            box.addEventListener('touchend', function (e) {
+                if (x0 !== null) { var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1)); }
+                x0 = null; start();
+            });
+        });
+    </script>
+
+    <!-- DRAFT ONLY: 画像ファイル未配置でも崩れないよう、読み込み失敗した画像を隠す（公開前に削除可） -->
+    <script>
+        document.querySelectorAll('img').forEach(function (img) {
+            function hide() { img.style.visibility = 'hidden'; }
+            if (img.complete && img.naturalWidth === 0) hide();
+            img.addEventListener('error', hide);
+        });
+    </script>
+</body>
+</html>

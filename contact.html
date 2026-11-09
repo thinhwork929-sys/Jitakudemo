@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ｜JitakuTV香港</title>
+    <meta name="description" content="JitakuTV香港へのお問い合わせページです。サービス内容、料金、設置に関するご質問やご相談など、お気軽にお問い合わせください。">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Font Awesome (Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- TODO: JitakuTV香港用のGoogleアナリティクスIDを設定（BBMAXのIDは使わない） -->
+    
+    <!-- CSS riêng cho trang Contact お問い合わせ -->
+    <style>
+        :root {
+            --primary-red: #D7282F;
+            --primary-red-hover: #b81f25;
+            --primary-red-light: #fdf0f0;
+            --border-slate: #cbd5e1;
+            --text-main: #0f172a;
+        }
+
+        /* BANNER */
+        .page-banner {
+            position: relative;
+            background: linear-gradient(135deg, #12214a 0%, #1B2F5E 55%, #2C4F9A 100%);
+            color: #ffffff;
+            padding: 60px 20px 80px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(215, 40, 47, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        .banner-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(215, 40, 47, 0.15);
+            border: 1px solid rgba(250, 114, 114, 0.4);
+            color: #fca5a5;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .page-banner h1 {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .page-banner h1 i {
+            color: var(--primary-red);
+            filter: drop-shadow(0 0 8px rgba(220,38,38,0.6));
+        }
+
+        .page-banner p.banner-desc {
+            font-size: 15px;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* STEPS PROGRESS BAR */
+        .form-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .step-item.active {
+            color: #ffffff;
+        }
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #334155;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .step-item.active .step-number {
+            background: var(--primary-red);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(215, 40, 47, 0.6);
+        }
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: #334155;
+            min-width: 30px;
+        }
+
+        /* FORM CONTAINER */
+        .form-section {
+            padding: 0 0 60px;
+            background-color: #f8fafc;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: -40px auto 0;
+            background: #ffffff;
+            padding: 45px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* INSTRUCTION BOX */
+        .form-notice-box {
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary-red);
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin-bottom: 28px;
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* QUICK CONTACT CARDS */
+        .quick-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .quick-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .quick-card i {
+            font-size: 24px;
+            color: var(--primary-red);
+        }
+        .quick-card div {
+            display: flex;
+            flex-direction: column;
+        }
+        .quick-card strong {
+            font-size: 13px;
+            color: #64748b;
+        }
+        .quick-card a {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .quick-card a:hover {
+            color: var(--primary-red);
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+        .form-group label.form-title {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        .form-group label .req {
+            background-color: var(--primary-red);
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        .form-group label .opt {
+            background-color: #94a3b8;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-wrapper i.input-icon {
+            position: absolute;
+            left: 16px;
+            color: #94a3b8;
+            font-size: 16px;
+            transition: color 0.25s ease;
+            pointer-events: none;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px 14px 45px;
+            font-size: 15px;
+            border: 1.5px solid var(--border-slate);
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.25s ease-in-out;
+            font-family: inherit;
+            color: var(--text-main);
+            background-color: #fff;
+        }
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+        .form-control:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 4px rgba(215, 40, 47, 0.12);
+        }
+        .input-wrapper:focus-within i.input-icon {
+            color: var(--primary-red);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            cursor: pointer;
+        }
+
+        textarea.form-control {
+            padding-left: 16px;
+        }
+
+        /* BUTTONS */
+        .submit-btn-wrap {
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .btn-submit, .btn-back {
+            font-size: 16px;
+            font-weight: 700;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-hover) 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(215, 40, 47, 0.28);
+            flex: 1;
+            max-width: 320px;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(215, 40, 47, 0.38);
+        }
+        .btn-back {
+            background: #e2e8f0;
+            color: #475569;
+        }
+        .btn-back:hover {
+            background: #cbd5e1;
+        }
+
+        /* CONFIRMATION TABLE */
+        .confirm-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .confirm-table th, .confirm-table td {
+            padding: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+            font-size: 15px;
+        }
+        .confirm-table th {
+            width: 35%;
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+        }
+        .confirm-table td {
+            color: var(--text-main);
+            font-weight: 600;
+            white-space: pre-wrap; /* Giữ định dạng xuống dòng của Textarea */
+        }
+
+        /* SUCCESS STEP */
+        .success-box {
+            text-align: center;
+            padding: 30px 10px;
+        }
+        .success-icon {
+            font-size: 60px;
+            color: #16a34a;
+            margin-bottom: 20px;
+        }
+        .success-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+        .success-desc {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px 20px;
+                margin-top: -20px;
+                border-radius: 12px;
+            }
+            .quick-contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-banner h1 {
+                font-size: 24px;
+            }
+            .form-steps {
+                gap: 8px;
+            }
+            .step-item span.step-title {
+                display: none;
+            }
+            .confirm-table th, .confirm-table td {
+                display: block;
+                width: 100%;
+            }
+            .confirm-table th {
+                background: transparent;
+                padding-bottom: 4px;
+                color: #94a3b8;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- TODO: 実ロゴ画像がある場合は <img src="images/jitakutv-logo.svg" alt="JitakuTV 香港"> に差し替え -->
+                <a href="index.html"><span class="logo-text">Jitaku<em>TV</em><small>香港</small></span></a>
+            </div>
+
+            <div class="header-slogan">
+                海外で日本のテレビ視聴！
+            </div>
+
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SIDEBAR MENU -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="side-menu" id="sideMenu" aria-label="Sidebar Menu">
+        <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+
+        <ul class="side-menu-links">
+            <li><a href="index.html#details-section">Jitakutvとは</a></li>
+            <li><a href="index.html#pricing-section">プラン・料金</a></li>
+            <li><a href="index.html#workflow-section">ご契約までの流れ</a></li>
+            <li><a href="moshikomi.html" class="btn-highlight">お申込み</a></li>
+            <li><a href="contact.html" class="btn-outline-menu">お問合せ</a></li>
+
+            <li class="menu-divider"></li>
+            <li><a href="faq.html">良くあるご質問</a></li>
+            <li><a href="#" id="snsLink">SNS <span class="todo">リンク設定</span></a></li>
+        </ul>
+
+        <div class="side-menu-footer">
+            <div class="phone-info">
+                <p><span class="todo">☎ +852 9702 1586</span> <img src="https://flagcdn.com/w40/jp.png" alt="Japan" style="vertical-align: middle; margin: 0 4px; width: 20px; border: 1px solid #ddd; border-radius: 2px;"> <small>(日本語対応)</small></p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- PAGE BANNER -->
+        <section class="page-banner">
+            <div class="container">
+                <div class="banner-badge">
+                    <i class="fas fa-headset"></i> 受付時間：<span class="todo">（要確認）</span>
+                </div>
+                <h1>
+                    <i class="fas fa-envelope"></i> お問い合わせ
+                </h1>
+                <p class="banner-desc">
+                    サービスに関するご質問、お見積りのご相談、無料体験のお申込みなど<br>
+                    些細なことでもお気軽にお問い合わせください。
+                </p>
+
+                <!-- Progress Bar -->
+                <div class="form-steps">
+                    <div class="step-item active" id="step-1-indicator">
+                        <span class="step-number">1</span>
+                        <span class="step-title">入力</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-item" id="step-2-indicator">
+                        <span class="step-number">2</span>
+                        <span class="step-title">確認</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-item" id="step-3-indicator">
+                        <span class="step-number">3</span>
+                        <span class="step-title">完了</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORM SECTION -->
+        <section class="form-section">
+            <div class="container">
+                <div class="form-container">
+                    
+                    <!-- BƯỚC 1: FORM NHẬP THÔNG TIN -->
+                   <!-- TODO: Web3FormsでHK専用のaccess_keyを作成し、下の YOUR_HK_ACCESS_KEY を置き換え（BBMAXのキーは使わない） -->
+                   <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                    <input type="hidden" name="access_key" value="YOUR_HK_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="【JitakuTV香港】Webサイトからのお問い合わせ">
+                        
+                        <!-- LIÊN HỆ NHANH HOTLINE -->
+                        <div class="quick-contact-grid">
+                            <div class="quick-card">
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <strong>お電話でのお問い合わせ</strong>
+                                    <span class="todo">☎ +852 9702 1586（日本語対応）</span>
+                                </div>
+                            </div>
+                            <div class="quick-card">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>営業時間</strong>
+                                    <span style="font-size: 14px; font-weight: 600; color: #334155;"><span class="todo">（要確認）</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LƯU Ý DẪN NHẬP -->
+                        <div class="form-notice-box">
+                            <i class="fas fa-info-circle" style="color: var(--primary-red); margin-right: 5px;"></i>
+                            <strong>【ご入力に関するご注意】</strong><br>
+                            ・<span style="color: #D7282F; font-weight: bold;">※</span> 印のついた項目は必須項目です。<br>
+                            ・数字とローマ字を入力する際は<strong>半角</strong>をご使用ください。
+                        </div>
+
+                        <!-- 1. TÁCH HỌ TÊN: KANJI & ROMAJI -->
+                        <div class="form-group">
+                            <label class="form-title">お名前 <span class="req">必須</span></label>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="fullname_kanji" name="fullname_kanji" class="form-control" placeholder="漢字氏名 (例：山田 太郎)" required>
+                                </div>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-font input-icon"></i>
+                                    <input type="text" id="fullname_romaji" name="fullname_romaji" class="form-control" placeholder="ローマ字表記 (例：Yamada Taro)" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. フリガナ -->
+                        <div class="form-group">
+                            <label for="furigana" class="form-title">フリガナ <span class="req">必須</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-signature input-icon"></i>
+                                <input type="text" id="furigana" name="furigana" class="form-control" placeholder="例：ヤマダ タロウ" required>
+                            </div>
+                        </div>
+
+                        <!-- 3. メールアドレス -->
+                        <div class="form-group">
+                            <label for="email" class="form-title">メールアドレス <span class="req">必須</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="例：example@domain.com" required>
+                            </div>
+                        </div>
+
+                        <!-- 4. 電話番号 -->
+                        <div class="form-group">
+                            <label for="phone" class="form-title">電話番号 <span class="req">必須</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="例：090-1234-5678" required>
+                            </div>
+                        </div>
+
+                        <!-- 5. ご住所 (Arbitrary) -->
+                        <div class="form-group">
+                            <label for="address" class="form-title">ご住所 (香港でのご滞在先) <span class="opt">任意</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-map-marker-alt input-icon"></i>
+                                <input type="text" id="address" name="address" class="form-control" placeholder="例：Tsim Sha Tsui, Kowloon, Hong Kong">
+                            </div>
+                        </div>
+
+                        <!-- 6. お問い合わせ種別 (DANH MỤC HỖ TRỢ) -->
+                        <div class="form-group">
+                            <label for="category" class="form-title">お問い合わせ種別 <span class="req">必須</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-list input-icon"></i>
+                                <select id="category" name="category" class="form-control" required>
+                                    <option value="" disabled selected>選択してください</option>
+                                    <option value="無料お試し体験のご依頼">無料お試し体験のご依頼</option>
+                                    <option value="サービス料金・プランについて">サービス料金・プランについて</option>
+                                    <option value="設置・工事に関するご相談">設置・工事に関するご相談</option>
+                                    <option value="不具合・トラブルのご相談">不具合・トラブルのご相談</option>
+                                    <option value="その他のお問い合わせ">その他のお問い合わせ</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 7. お問い合わせ内容 -->
+                        <div class="form-group">
+                            <label for="message" class="form-title">お問い合わせ内容 <span class="req">必須</span></label>
+                            <textarea id="message" name="message" class="form-control" rows="6" placeholder="お問い合わせ内容をご自由にご記入ください。" required></textarea>
+                        </div>
+
+                        <!-- Nút chuyển sang Bước 2 -->
+                        <div class="submit-btn-wrap">
+                            <button type="button" id="toStep2Btn" class="btn-submit">
+                                確認画面へ進む <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- BƯỚC 2: MÀN HÌNH XÁC NHẬN THÔNG TIN (ẨN MẶC ĐỊNH) -->
+                    <div id="confirmStep" style="display: none;">
+                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--text-main); text-align: center;">
+                            お問い合わせ内容のご確認
+                        </h3>
+                        <p style="font-size: 14px; color: #64748b; margin-bottom: 25px; text-align: center;">
+                            入力内容をご確認の上、「送信する」ボタンを押してください。
+                        </p>
+
+                        <table class="confirm-table">
+                            <tr><th>お名前 (漢字)</th><td id="c-fullname-kanji"></td></tr>
+                            <tr><th>お名前 (ローマ字)</th><td id="c-fullname-romaji"></td></tr>
+                            <tr><th>フリガナ</th><td id="c-furigana"></td></tr>
+                            <tr><th>メールアドレス</th><td id="c-email"></td></tr>
+                            <tr><th>電話番号</th><td id="c-phone"></td></tr>
+                            <tr><th>ご住所</th><td id="c-address"></td></tr>
+                            <tr><th>お問い合わせ種別</th><td id="c-category"></td></tr>
+                            <tr><th>お問い合わせ内容</th><td id="c-message"></td></tr>
+                        </table>
+
+                        <div class="submit-btn-wrap">
+                            <button type="button" id="backToStep1Btn" class="btn-back">
+                                <i class="fas fa-edit"></i> 修正する
+                            </button>
+                            <button type="button" id="finalSubmitBtn" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> この内容で送信する
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- BƯỚC 3: MÀN HÌNH HOÀN TẤT THÀNH CÔNG (ẨN MẶC ĐỊNH) -->
+                    <div id="successStep" style="display: none;">
+                        <div class="success-box">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h2 class="success-title">送信が完了いたしました</h2>
+                            <p class="success-desc">
+                                お問い合わせいただき誠にありがとうございます。<br>
+                                ご入力いただいたメールアドレスへ受付確認メールをお送りいたしました。<br>
+                                担当者より順次回答させていただきますので、今しばらくお待ちください。
+                            </p>
+                            <a href="index.html" class="btn-submit" style="text-decoration: none; display: inline-flex;">
+                                トップページに戻る
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact-section">
+        <div class="footer-container">
+            <div class="footer-col footer-brand">
+                <span class="logo-text">Jitaku<em>TV</em><small>香港</small></span>
+                <p class="brand-desc" style="margin-top:12px;">海外で日本のテレビ視聴！</p>
+
+                <div class="trust-badges">
+                    <div class="badge-item">
+                        <span class="badge-icon">🎧</span>
+                        <span>安心の日本語サポート</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">クイックリンク</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#details-section">Jitakutvとは</a></li>
+                    <li><a href="index.html#pricing-section">プラン・料金</a></li>
+                    <li><a href="index.html#workflow-section">ご契約までの流れ</a></li>
+                    <li><a href="faq.html">良くあるご質問</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <h4 class="footer-title">会社情報</h4>
+                <ul class="contact-info">
+                    <li>
+                        <span class="contact-icon">📞</span>
+                        <div><strong>電話番号:</strong><br><span class="todo">+852 9702 1586</span></div>
+                    </li>
+                    <li>
+                        <span class="contact-icon">📍</span>
+                        <div><strong>住所:</strong> <span class="todo">L82 B1 Peninsula Centre（半島中心）, 67 Mody Rd, Tsim Sha Tsui, Hong Kong</span></div>
+                    </li>
+                    <li>
+                        <span class="contact-icon">⏰</span>
+                        <div><strong>営業時間:</strong><span class="todo">（要確認）</span></div>
+                    </li>
+                    <li>
+                        <span class="contact-icon">✉️</span>
+                        <div><strong>メール:</strong><br><span class="todo">hk@bbmax.net</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="payment-methods">
+                    <span>対応決済:</span>
+                    <span class="todo">（要確認）</span>
+                </div>
+                <p class="copyright">&copy; 2026 JitakuTV香港</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT XỬ LÝ HAMBURGER MENU & TIẾN TRÌNH 3 BƯỚC FORM -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Hamburger Menu Logic
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuLinks = document.querySelectorAll('.side-menu-links a');
+
+            function openMenu() {
+                if (sideMenu) sideMenu.classList.add('active');
+                if (menuOverlay) menuOverlay.classList.add('active');
+            }
+
+            function closeMenu() {
+                if (sideMenu) sideMenu.classList.remove('active');
+                if (menuOverlay) menuOverlay.classList.remove('active');
+            }
+
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // 2. Multi-Step Form Navigation Logic
+            const form = document.getElementById('contactForm');
+            const confirmStep = document.getElementById('confirmStep');
+            const successStep = document.getElementById('successStep');
+
+            const toStep2Btn = document.getElementById('toStep2Btn');
+            const backToStep1Btn = document.getElementById('backToStep1Btn');
+            const finalSubmitBtn = document.getElementById('finalSubmitBtn');
+
+            const step1Ind = document.getElementById('step-1-indicator');
+            const step2Ind = document.getElementById('step-2-indicator');
+            const step3Ind = document.getElementById('step-3-indicator');
+
+            // Chuyển từ Bước 1 -> Bước 2 (Xác nhận)
+            if (toStep2Btn) {
+                toStep2Btn.addEventListener('click', function () {
+                    if (form && !form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+
+                    // Gán dữ liệu sang Bảng xác nhận
+                    if (document.getElementById('c-fullname-kanji')) document.getElementById('c-fullname-kanji').textContent = document.getElementById('fullname_kanji')?.value || '';
+                    if (document.getElementById('c-fullname-romaji')) document.getElementById('c-fullname-romaji').textContent = document.getElementById('fullname_romaji')?.value || '';
+                    if (document.getElementById('c-furigana')) document.getElementById('c-furigana').textContent = document.getElementById('furigana')?.value || '';
+                    if (document.getElementById('c-email')) document.getElementById('c-email').textContent = document.getElementById('email')?.value || '';
+                    if (document.getElementById('c-phone')) document.getElementById('c-phone').textContent = document.getElementById('phone')?.value || '';
+                    
+                    const addressVal = document.getElementById('address')?.value.trim();
+                    if (document.getElementById('c-address')) document.getElementById('c-address').textContent = addressVal !== '' ? addressVal : '未記入';
+
+                    const categorySelect = document.getElementById('category');
+                    if (document.getElementById('c-category') && categorySelect) {
+                        document.getElementById('c-category').textContent = categorySelect.options[categorySelect.selectedIndex]?.text || '';
+                    }
+
+                    if (document.getElementById('c-message')) document.getElementById('c-message').textContent = document.getElementById('message')?.value || '';
+
+                    // Chuyển màn hình
+                    if (form) form.style.display = 'none';
+                    if (confirmStep) confirmStep.style.display = 'block';
+
+                    if (step1Ind) step1Ind.classList.remove('active');
+                    if (step2Ind) step2Ind.classList.add('active');
+
+                    window.scrollTo({ top: 100, behavior: 'smooth' });
+                });
+            }
+
+            // Quay lại Bước 1 từ Bước 2
+            if (backToStep1Btn) {
+                backToStep1Btn.addEventListener('click', function () {
+                    if (confirmStep) confirmStep.style.display = 'none';
+                    if (form) form.style.display = 'block';
+
+                    if (step2Ind) step2Ind.classList.remove('active');
+                    if (step1Ind) step1Ind.classList.add('active');
+
+                    window.scrollTo({ top: 100, behavior: 'smooth' });
+                });
+            }
+
+            // Chuyển từ Bước 2 -> Bước 3 (Gửi dữ liệu qua Web3Forms)
+            if (finalSubmitBtn) {
+                finalSubmitBtn.addEventListener('click', function () {
+                    const formData = new FormData(form);
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            if (confirmStep) confirmStep.style.display = 'none';
+                            if (successStep) successStep.style.display = 'block';
+
+                            if (step2Ind) step2Ind.classList.remove('active');
+                            if (step3Ind) step3Ind.classList.add('active');
+
+                            window.scrollTo({ top: 100, behavior: 'smooth' });
+                        } else {
+                            console.log(json);
+                            alert(json.message || 'エラーが発生しました。もう一度お試しください。');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('メール送信システムに接続できません。');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
